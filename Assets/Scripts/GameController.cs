@@ -6,7 +6,7 @@ public class GameController : MonoBehaviour {
 
     public GameObject RightArm;
     public GameObject LeftArm;
-    public int[,] array = new int[4, 3] { { 1,-4, 4 }, { 2,-2, 2 }, { 3,-1, 3 }, { 1,-4, 4 } };
+    public int[,] array = new int[4, 3] { { 1,-4, 4 }, { 2,-2, 2 }, { 3,-1, 3 }, { 10,-4, 4 } };
     public int timeindex = 0;
     bool corrutineRuning = false;
 // Use this for initialization
@@ -54,10 +54,10 @@ public class GameController : MonoBehaviour {
                 StartCoroutine(PositionSwicher(array[timeindex, 0]));
             if (corrutineRuning)
             {
-                Debug.Log(array[timeindex, 1]);
                 if ( LeftArm.transform.position.x >= (array[timeindex, 1] - 0.5f) && LeftArm.transform.position.x >= (array[timeindex, 1] + 0.5f))
                 {
-                    Debug.Log("Good");
+                  
+
                 }
 
             }
