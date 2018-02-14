@@ -6,7 +6,8 @@ public class GameController : MonoBehaviour {
 
     public GameObject RightArm;
     public GameObject LeftArm;
-    public int[,] array = new int[4, 3] { { 1,-4, 4 }, { 2,-2, 2 }, { 3,-1, 3 }, { 10,-4, 4 } };
+    public BearBehaviour bear;
+    public int[,] array = new int[4, 3] { { 4,-4, 4 }, { 4,-2, 2 }, { 3,-1, 3 }, { 10,-4, 4 } };
     public int timeindex = 0;
     bool corrutineRuning = false;
 // Use this for initialization
@@ -27,20 +28,20 @@ public class GameController : MonoBehaviour {
            
         }
         //left arm
-        if (Input.GetKey(KeyCode.Q))
+        if (Input.GetKey(KeyCode.Z))
         {
             MoveArmLeft(LeftArm, 10,-4);
         }
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKey(KeyCode.X))
         {
             MoveArmRight(LeftArm,10,-1);
         }
         //right arm
-        if (Input.GetKey(KeyCode.I))
+        if (Input.GetKey(KeyCode.N))
         {
             MoveArmLeft(RightArm, 10, 1);
         }
-        if (Input.GetKey(KeyCode.P))
+        if (Input.GetKey(KeyCode.M))
         {
             MoveArmRight(RightArm,10,4);
         }
@@ -54,10 +55,14 @@ public class GameController : MonoBehaviour {
                 StartCoroutine(PositionSwicher(array[timeindex, 0]));
             if (corrutineRuning)
             {
-                if ( LeftArm.transform.position.x >= (array[timeindex, 1] - 0.5f) && LeftArm.transform.position.x >= (array[timeindex, 1] + 0.5f))
+                Debug.Log(LeftArm.transform.position.x +">="+ (array[timeindex, 1]+0.5f) +"&&"+ LeftArm.transform.position.x +" >= "+(array[timeindex, 1]-0.5f));
+                if ( LeftArm.transform.position.x - 0.5f >= array[timeindex, 1] && LeftArm.transform.position.x + 0.5f >= array[timeindex, 1])
                 {
-                  
-
+                    bear.BearStand();
+                }
+                else
+                {
+                    bear.BearAttack();
                 }
 
             }
