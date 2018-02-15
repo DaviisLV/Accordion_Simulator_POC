@@ -10,11 +10,21 @@ public class GameController : MonoBehaviour {
     public int[,] array = new int[4, 3] { { 4,-4, 4 }, { 4,-2, 2 }, { 3,-1, 3 }, { 10,-4, 4 } };
     public int timeindex = 0;
     bool corrutineRuning = false;
-// Use this for initialization
+    public GameObject HeadCamera;
+    public GameObject boxPrefab;
+    private GameObject box;
+    // Use this for initialization
     void Start () {
 
-      
+          
+  for (int i = 0; i <5; i++)
+        {
+        Debug.Log("test");
+            box = Instantiate(boxPrefab);
+            box.transform.position = new Vector3(HeadCamera.transform.position.x + (0.5f*i), HeadCamera.transform.position.y - 0.4f, HeadCamera.transform.position.z + 0.5f);
 
+
+        }
     }
 
     // Update is called once per frame
@@ -55,7 +65,7 @@ public class GameController : MonoBehaviour {
                 StartCoroutine(PositionSwicher(array[timeindex, 0]));
             if (corrutineRuning)
             {
-                Debug.Log(LeftArm.transform.position.x +">="+ (array[timeindex, 1]+0.5f) +"&&"+ LeftArm.transform.position.x +" >= "+(array[timeindex, 1]-0.5f));
+             //   Debug.Log(LeftArm.transform.position.x +">="+ (array[timeindex, 1]+0.5f) +"&&"+ LeftArm.transform.position.x +" >= "+(array[timeindex, 1]-0.5f));
                 if ( LeftArm.transform.position.x - 0.5f >= array[timeindex, 1] && LeftArm.transform.position.x + 0.5f >= array[timeindex, 1])
                 {
                     bear.BearStand();
