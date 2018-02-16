@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour {
 
-  
+  public float poz = - 0.15f;
     public GameObject HeadCamera;
     public GameObject PathHight;
 
@@ -12,7 +12,7 @@ public class Controller : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        PathHight.transform.position = new Vector3(PathHight.transform.position.x, HeadCamera.transform.position.y - 0.15f, PathHight.transform.position.z);
+        PathHight.transform.position = new Vector3(PathHight.transform.position.x, HeadCamera.transform.position.y + poz, PathHight.transform.position.z);
     }
 
 
