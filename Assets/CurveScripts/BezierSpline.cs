@@ -8,30 +8,39 @@ public class BezierSpline : MonoBehaviour {
     public Vector3[] points = new Vector3[V3];
     float pozX1 = 1;
     float pozX2 = -1;
+        float X = 0;
+        float Y = 0;
+        float Z = 0;
+    public bool swich = false;
+       
     public void Awake()
     {
         GenerateV3();
     }
     public void GenerateV3()
     {
-        float X = 0;
-        float Y = 0;
-        float Z = 0;
-        int rightSide = 1;
+       int rightSide = 1;
         int leftSide = 0;
+
         for (int i = 0; i < V3; i++)
         {
             if (rightSide <= 2)
             {
+                if (swich)
                 X = pozX1;
+                else
+                X = pozX2;
                 rightSide++;
                 leftSide = 0;
             }
             else
             {
-                if(leftSide <= 2)
+                if(leftSide <=1)
                 {
-                    X = pozX2;
+                    if (swich)
+                        X = pozX2;
+                    else
+                        X = pozX1;
                     leftSide++;
                 }
                 else
@@ -47,6 +56,7 @@ public class BezierSpline : MonoBehaviour {
             points[i] = new Vector3(X,Y,Z);
         }
     }
+
 
 
 public int CurveCount {

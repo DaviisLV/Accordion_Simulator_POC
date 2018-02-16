@@ -14,6 +14,9 @@ public class GetArmPosition : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        text.text = Arm.transform.position.x.ToString();
+        OnCollisionSelfDestroy GC = Arm.GetComponent<OnCollisionSelfDestroy>();
+
+        text.text = GC.GetHitCount().ToString();
+     
 	}
 }
