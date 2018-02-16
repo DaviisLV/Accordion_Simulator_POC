@@ -6,8 +6,8 @@ public class BezierSpline : MonoBehaviour {
    
     static int V3 = 31;
     public Vector3[] points = new Vector3[V3];
-    float pozX1 = 1;
-    float pozX2 = -1;
+    float pozX1 = 0.5f;
+    float pozX2 = -0.5f;
         float X = 0;
         float Y = 0;
         float Z = 0;

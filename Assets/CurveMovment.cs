@@ -13,6 +13,6 @@ public class CurveMovment : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		CurveObject.transform.position += Vector3.back * Time.deltaTime * 5;
+		CurveObject.transform.position += Vector3.back * Time.deltaTime * 2;
     }
 }
