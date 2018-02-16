@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ControllerButtonPress : MonoBehaviour {
     private SteamVR_TrackedController device;
@@ -15,7 +16,7 @@ public class ControllerButtonPress : MonoBehaviour {
 	
     void Restart(object sander, ClickedEventArgs e)
     {
-        Debug.Log("Click");
+        SceneManager.LoadScene("VRMainScene");
     }
 	// Update is called once per frame
 	void Update () {

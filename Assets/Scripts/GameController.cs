@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
@@ -40,7 +41,8 @@ public class GameController : MonoBehaviour {
         //left arm
         if (Input.GetKey(KeyCode.Z))
         {
-            MoveArmLeft(LeftArm, 10,-4);
+            SceneManager.LoadScene("Main");
+            //MoveArmLeft(LeftArm, 10,-4);
         }
         if (Input.GetKey(KeyCode.X))
         {
