@@ -50,7 +50,8 @@ public class BezierSpline : MonoBehaviour {
             }
             if ( i != 0)
             {
-                Z = UnityEngine.Random.Range(Z, Z + 1f);
+                Z = Z + 0.4f;
+               // Z = UnityEngine.Random.Range(Z, Z + 1f);
             }
             Debug.Log(i);
             points[i] = new Vector3(X,Y,Z);
