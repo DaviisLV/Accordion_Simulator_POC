@@ -27,11 +27,14 @@ public class BezierSplineInspector : Editor {
 			Handles.DrawBezier(p0, p3, p1, p2, Color.white, null, 2f);
 			p0 = p3;
 		}
-	}
+
+
+    }
  
     private Vector3 ShowPoint(int index)
     {
         Vector3 point = handleTransform.TransformPoint(spline.points[index]);
+      
         EditorGUI.BeginChangeCheck();
         point = Handles.DoPositionHandle(point, handleRotation);
         if (EditorGUI.EndChangeCheck())

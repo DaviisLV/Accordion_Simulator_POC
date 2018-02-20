@@ -4,14 +4,29 @@ using UnityEngine;
 
 public class OnCollisionSelfDestroy : MonoBehaviour {
     int caunt;
+    ParticleSystem particle;
+    public AudioSource music;
+
 
     void OnTriggerEnter(Collider other)
     {
-      if (other.gameObject.tag =="Cube")
+        if (other.gameObject.tag == "Cube")
+        {
+            Destroy(other.gameObject.GetComponent<BoxCollider>());
+            if (caunt < 1)
+            {
+                if (!music.isPlaying)
+                music.Play();
+            
+            }
+            particle = other.gameObject.GetComponentInChildren<ParticleSystem>();
+            particle.Play();
+            HitNote();
 
-        Destroy(other.gameObject);
-        caunt++;
-        Debug.Log(caunt);
+            Destroy(other.gameObject, 1f);
+
+            caunt++;
+        }
     }
 
   public int GetHitCount()
@@ -19,4 +34,16 @@ public class OnCollisionSelfDestroy : MonoBehaviour {
         return caunt;
     }
 
+    public void MissNote()
+    {
+        music.pitch-=0.2f;
+    }
+    public void HitNote()
+    {
+        if (music.pitch == 1) return;
+        if (music.pitch < 1)
+            music.pitch += 0.005f;
+        if (music.pitch > 1)
+            music.pitch = 1;
+    }
 }

@@ -4,7 +4,7 @@ using System;
 public class BezierSpline : MonoBehaviour {
 
    
-    static int V3 = 31;
+    private static int V3 = 121;
     public Vector3[] points = new Vector3[V3];
     public float pozX1 = 0.2f;
     public float pozX2 = -0.2f;
@@ -12,10 +12,15 @@ public class BezierSpline : MonoBehaviour {
         float Y = 0;
         float Z = 0;
     public bool swich = false;
-       
+
+    private LineRenderer lineRenderer;
+    private int index=0;
+
     public void Awake()
     {
+        lineRenderer = GetComponent<LineRenderer>();
         GenerateV3();
+       // SetLinePoints(points);
     }
     public void GenerateV3()
     {
@@ -50,10 +55,10 @@ public class BezierSpline : MonoBehaviour {
             }
             if ( i != 0)
             {
-                Z = Z + 0.4f;
-               // Z = UnityEngine.Random.Range(Z, Z + 1f);
+               // Z = Z + 0.2f;
+                Z = UnityEngine.Random.Range(Z, Z + 0.4f);
             }
-            Debug.Log(i);
+
             points[i] = new Vector3(X,Y,Z);
         }
     }
@@ -99,5 +104,8 @@ public int CurveCount {
 	public Vector3 GetDirection (float t) {
 		return GetVelocity(t).normalized;
 	}
+
+   
+    
 
 }
