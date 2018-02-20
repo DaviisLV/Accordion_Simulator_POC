@@ -40,9 +40,8 @@ GameObject:
   - component: {fileID: 23780818579924604}
   - component: {fileID: 65724046408250796}
   - component: {fileID: 54826594176328704}
-  - component: {fileID: 122716371999352082}
   m_Layer: 8
-  m_Name: notered
+  m_Name: NoteRed
   m_TagString: Cube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -143,17 +142,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.1, y: 0.1, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!122 &122716371999352082
-Halo:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1764611720471200}
-  m_Enabled: 1
-  m_Color:
-    serializedVersion: 2
-    rgba: 4278190208
-  m_Size: 0.15
 --- !u!198 &198273220200564156
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -304,7 +292,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 1, g: 0, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -366,7 +354,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
