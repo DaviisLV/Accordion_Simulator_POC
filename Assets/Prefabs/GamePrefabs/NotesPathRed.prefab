@@ -264,7 +264,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   pozX1: 0.2
   pozX2: -0.2
-  swich: 0
+  swich: 1
 --- !u!114 &114278071285355100
 MonoBehaviour:
   m_ObjectHideFlags: 1

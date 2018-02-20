@@ -8,7 +8,7 @@ public class MissedNoteCollector : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Cube")
+        if (other.gameObject.tag == "BlueNotes" || other.gameObject.tag == "RedNotes")
         {
             MissNote();
             Destroy(other.gameObject);

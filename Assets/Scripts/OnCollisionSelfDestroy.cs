@@ -6,11 +6,12 @@ public class OnCollisionSelfDestroy : MonoBehaviour {
     int caunt;
     ParticleSystem particle;
     public AudioSource music;
+    public GameObject collisionNote;
 
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Cube")
+        if (other.gameObject.tag == collisionNote.tag)
         {
             Destroy(other.gameObject.GetComponent<BoxCollider>());
             if (caunt < 1)
