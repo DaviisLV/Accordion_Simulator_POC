@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 65724046408250796}
   - component: {fileID: 54826594176328704}
   m_Layer: 8
-  m_Name: NoteRed
+  m_Name: notered
   m_TagString: RedNotes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
