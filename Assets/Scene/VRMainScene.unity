@@ -171,10 +171,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 786668356}
   - {fileID: 1182304751}
   - {fileID: 2064733942}
-  - {fileID: 235982608}
   m_Father: {fileID: 974901487}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -337,8 +335,8 @@ Transform:
   - {fileID: 1892604718}
   - {fileID: 1258565262}
   - {fileID: 491720763}
-  m_Father: {fileID: 100106454}
-  m_RootOrder: 3
+  m_Father: {fileID: 1381001435}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &491720763 stripped
 Transform:
@@ -696,7 +694,7 @@ Transform:
   m_Children:
   - {fileID: 746198983}
   m_Father: {fileID: 100106454}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1258565262 stripped
 Transform:
@@ -708,7 +706,7 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 100106454}
+    m_TransformParent: {fileID: 1381001435}
     m_Modifications:
     - target: {fileID: 4736676384465928, guid: 463f405ae017de44db9b7397364a17da, type: 2}
       propertyPath: m_LocalPosition.x
@@ -740,7 +738,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4736676384465928, guid: 463f405ae017de44db9b7397364a17da, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114737345312708408, guid: 463f405ae017de44db9b7397364a17da,
         type: 2}
@@ -787,7 +785,9 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 235982608}
+  - {fileID: 786668356}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1615,7 +1615,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 100106454}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2064733943
 MonoBehaviour:
