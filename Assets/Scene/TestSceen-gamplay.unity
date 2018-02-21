@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -171,7 +171,6 @@ GameObject:
   - component: {fileID: 445842611}
   - component: {fileID: 445842610}
   - component: {fileID: 445842609}
-  - component: {fileID: 445842608}
   m_Layer: 0
   m_Name: red
   m_TagString: Untagged
@@ -179,21 +178,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!54 &445842608
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 445842607}
-  serializedVersion: 2
-  m_Mass: 0.0000001
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &445842609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -367,7 +351,6 @@ GameObject:
   - component: {fileID: 680638455}
   - component: {fileID: 680638454}
   - component: {fileID: 680638457}
-  - component: {fileID: 680638458}
   m_Layer: 0
   m_Name: blue
   m_TagString: Untagged
@@ -455,21 +438,6 @@ MonoBehaviour:
   music: {fileID: 1169214026}
   collisionNote: {fileID: 1764611720471200, guid: e233d299723806b4e9d36ab0f9f983c7,
     type: 2}
---- !u!54 &680638458
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 680638452}
-  serializedVersion: 2
-  m_Mass: 0.0000001
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1001 &950547924
 Prefab:
   m_ObjectHideFlags: 0
