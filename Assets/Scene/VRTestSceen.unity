@@ -606,6 +606,16 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 54104290394140938, guid: c687c54a1d2b7f04eb5b1ce815ea2027,
+        type: 2}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54104290394140938, guid: c687c54a1d2b7f04eb5b1ce815ea2027,
+        type: 2}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c687c54a1d2b7f04eb5b1ce815ea2027, type: 2}
   m_IsPrefabParent: 0
