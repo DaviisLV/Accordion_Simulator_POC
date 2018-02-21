@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickUpObject : MonoBehaviour {
+public class pickUpObj : MonoBehaviour {
 
     private Valve.VR.EVRButtonId _triger = Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger;
 
-    private SteamVR_Controller.Device controller {
-        get {
+    private SteamVR_Controller.Device controller
+    {
+        get
+        {
             return SteamVR_Controller.Input((int)trackedObj.index);
-            }
+        }
     }
     private SteamVR_TrackedObject trackedObj;
 
