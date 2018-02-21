@@ -46,7 +46,7 @@ public class PickUpObject : MonoBehaviour {
 
     void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Pickupable"))
+        if (other.CompareTag("Finish"))
         {
             obj = other.gameObject;
         }
