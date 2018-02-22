@@ -30,7 +30,9 @@ public class StartGame : MonoBehaviour {
 
         if (Controller.GetPressDown(Menu))
         {
+            Controller.TriggerHapticPulse(100);
             line1.SetActive(true);
+
         }
 
         if (Controller.GetPressDown(Grip))
