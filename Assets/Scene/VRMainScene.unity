@@ -891,6 +891,16 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c1839c9715c52754a846029a35f9b92a, type: 2}
+    - target: {fileID: 54977744977312992, guid: fb20798556115d348a0fcaf7f52f8df8,
+        type: 2}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54539642322369086, guid: fb20798556115d348a0fcaf7f52f8df8,
+        type: 2}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb20798556115d348a0fcaf7f52f8df8, type: 2}
   m_IsPrefabParent: 0
@@ -1006,7 +1016,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1381001433}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a2d9dd889eedd9459ccc9d539897035, type: 3}
   m_Name: 
