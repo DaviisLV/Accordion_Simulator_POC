@@ -7,12 +7,13 @@ public class OnCollisionSelfDestroy : MonoBehaviour {
     ParticleSystem particle;
     public AudioSource music;
     public GameObject collisionNote;
-
+    public StartGame sGame;
 
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == collisionNote.tag)
         {
+            sGame.Vibration();
             particle = other.gameObject.GetComponentInChildren<ParticleSystem>();
             particle.Play();
 

@@ -30,7 +30,7 @@ public class StartGame : MonoBehaviour {
 
         if (Controller.GetPressDown(Menu))
         {
-            Controller.TriggerHapticPulse(100);
+           
             line1.SetActive(true);
 
         }
@@ -40,6 +40,11 @@ public class StartGame : MonoBehaviour {
             SceneManager.LoadScene("VRMainScene");
 
         }
+    }
+
+    public void Vibration()
+    {
+        Controller.TriggerHapticPulse(100, Valve.VR.EVRButtonId.k_EButton_Axis0);
     }
 
 
