@@ -44,7 +44,7 @@ public class StartGame : MonoBehaviour {
 
     public void Vibration()
     {
-        Controller.TriggerHapticPulse(100, Valve.VR.EVRButtonId.k_EButton_Axis0);
+        Controller.TriggerHapticPulse(2500, Valve.VR.EVRButtonId.k_EButton_Axis0);
     }
 
 
