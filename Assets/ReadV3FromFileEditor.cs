@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.SceneManagement;
+using System;
+using System.IO;
 
 [CustomEditor(typeof(ReadV3FromFile))]
 public class ReadV3FromFileEditor : Editor
@@ -27,11 +29,31 @@ public class ReadV3FromFileEditor : Editor
 
     private void Configure()
     {
-
+        GetV3FromFile("C:/Users/davis.abols/Documents/Bear/V3.txt");
         rf.V3Array = positionArray;
 
         EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
     }
 
+    void GetV3FromFile(string file)
+    {
+     
+   
+    if (File.Exists(file))
+        {
+            var sr = File.OpenText(file);
+            var line = sr.ReadLine();
+            while (line != null)
+            {
+                Debug.Log(line); // prints each line of the file
+                line = sr.ReadLine();
+            }
+        }
+        else
+        {
+            Debug.Log("Could not Open the file: " + file + " for reading.");
+            return;
+        }
+    }
 
 }
