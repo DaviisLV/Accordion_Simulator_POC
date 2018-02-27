@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ControllerButtonClick : MonoBehaviour {
 
-
+    public WriteV3InFile file;
 
     private const Valve.VR.EVRButtonId Menu = Valve.VR.EVRButtonId.k_EButton_ApplicationMenu;
     private const Valve.VR.EVRButtonId Triger = Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger;
@@ -29,15 +29,15 @@ public class ControllerButtonClick : MonoBehaviour {
 
         if (Controller.GetPressDown(Menu))
         {
-            WriteV3InFile wr = new WriteV3InFile();
-            wr.StartRecord();    
+            
+           file.StartRecord();    
 
         }
 
         if (Controller.GetPressDown(Triger))
         {
-            WriteV3InFile wr = new WriteV3InFile();
-            wr.StopRecord();
+           
+            file.StopRecord();
 
         }
     }
