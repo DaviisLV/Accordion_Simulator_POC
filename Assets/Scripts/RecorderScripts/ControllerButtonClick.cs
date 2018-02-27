@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ControllerButtonClick : MonoBehaviour {
-
+    public MoveForvard move;
     public WriteV3InFile file;
 
     private const Valve.VR.EVRButtonId Menu = Valve.VR.EVRButtonId.k_EButton_ApplicationMenu;
@@ -30,8 +30,8 @@ public class ControllerButtonClick : MonoBehaviour {
         if (Controller.GetPressDown(Menu))
         {
             
-           file.StartRecord();    
-
+           file.StartRecord();
+            move.Start = true;
         }
 
         if (Controller.GetPressDown(Triger))
