@@ -9,7 +9,7 @@ using System.Globalization;
 
 [CustomEditor(typeof(ReadV3FromFile))]
 public class ReadV3FromFileEditor : Editor
-{
+{ 
     static string filePath;
     private ReadV3FromFile rf;
     string[] sr;
@@ -38,7 +38,7 @@ public class ReadV3FromFileEditor : Editor
         }
         else
         {
-            EditorGUILayout.LabelField("File paths: "+filePath.ToString());
+            EditorGUILayout.LabelField("File paths: "+filePath);
         }
        
     }
@@ -61,6 +61,9 @@ public class ReadV3FromFileEditor : Editor
         if (path.Length != 0)
         {
             filePath = path;
+            // https://docs.unity3d.com/ScriptReference/EditorUtility.SetDirty.html
+            // EditorUtility.SetDirty(filePath);
+            //EditorUtillity.SetDirty(path);
         }
     }
 
