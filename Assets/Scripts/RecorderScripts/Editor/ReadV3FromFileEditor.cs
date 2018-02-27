@@ -9,12 +9,11 @@ using System.Globalization;
 
 [CustomEditor(typeof(ReadV3FromFile))]
 public class ReadV3FromFileEditor : Editor
-{ 
-    static string filePath;
+{
     private ReadV3FromFile rf;
     string[] sr;
-
     List<Vector3> paths = new List<Vector3>();
+
     private void OnEnable()
     {
         rf = (ReadV3FromFile)target;
@@ -23,70 +22,60 @@ public class ReadV3FromFileEditor : Editor
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
-       
+        if (GUILayout.Button("Update")) Reloud();
 
-
-        if (GUILayout.Button("Update")) Configure();
-    
-        if (GUILayout.Button("Select File")) Apply();
-
-
-        if (filePath == null)
+        if (GUILayout.Button("Select File"))
         {
-            EditorGUILayout.LabelField("Select File !");
-            
+            SelectNewFile();
+            Reloud();
+        }
+
+        if (rf.FilePath == null)
+        {
+            EditorGUILayout.LabelField("Select file!");
         }
         else
         {
-            EditorGUILayout.LabelField("File paths: "+filePath);
+            EditorGUILayout.LabelField("File paths: " + rf.FilePath);
         }
-       
     }
 
-    private void Configure()
+    private void Reloud()
     {
-        //C:/Users/davis.abols/Documents/Bear/V3.txt
-        GetV3FromFile(filePath);
-
+        GetV3FromFile(rf.FilePath);
         EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
     }
 
 
-
-    [MenuItem("Example/Overwrite Texture")]
-    static void Apply()
+    void SelectNewFile()
     {
-       
+
         string path = EditorUtility.OpenFilePanel("Select controller paths file", "", "txt");
         if (path.Length != 0)
         {
-            filePath = path;
-            // https://docs.unity3d.com/ScriptReference/EditorUtility.SetDirty.html
-            // EditorUtility.SetDirty(filePath);
-            //EditorUtillity.SetDirty(path);
+            rf.FilePath = path;
         }
+        EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
     }
 
 
     void GetV3FromFile(string file)
-    {  
-   
-    if (File.Exists(file))
+    {
+
+        if (File.Exists(file))
         {
             rf.V3ListOfPoints.Clear();
-  
             sr = File.ReadAllLines(file);
-         
+
             foreach (string s in sr)
             {
                 string[] lineData = s.Split(',');
                 float x = float.Parse(lineData[0], CultureInfo.InvariantCulture.NumberFormat);
                 float y = float.Parse(lineData[1], CultureInfo.InvariantCulture.NumberFormat);
                 float z = float.Parse(lineData[2], CultureInfo.InvariantCulture.NumberFormat);
-                Debug.Log(new Vector3(x, y, z));
                 paths.Add(new Vector3(x, y, z));
-            }      
-          
+            }
+
             rf.V3ListOfPoints = paths;
         }
         else
