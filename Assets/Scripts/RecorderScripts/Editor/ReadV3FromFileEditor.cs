@@ -10,7 +10,7 @@ using System.Globalization;
 [CustomEditor(typeof(ReadV3FromFile))]
 public class ReadV3FromFileEditor : Editor
 {
-    public string filePath;
+    static string filePath;
     private ReadV3FromFile rf;
     string[] sr;
 
@@ -23,10 +23,24 @@ public class ReadV3FromFileEditor : Editor
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
+       
 
-        filePath = EditorGUILayout.TextArea(filePath);
 
         if (GUILayout.Button("Update")) Configure();
+    
+        if (GUILayout.Button("Select File")) Apply();
+
+
+        if (filePath == null)
+        {
+            EditorGUILayout.LabelField("Select File !");
+            
+        }
+        else
+        {
+            EditorGUILayout.LabelField("File paths: "+filePath.ToString());
+        }
+       
     }
 
     private void Configure()
@@ -37,12 +51,26 @@ public class ReadV3FromFileEditor : Editor
         EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
     }
 
+
+
+    [MenuItem("Example/Overwrite Texture")]
+    static void Apply()
+    {
+       
+        string path = EditorUtility.OpenFilePanel("Select controller paths file", "", "txt");
+        if (path.Length != 0)
+        {
+            filePath = path;
+        }
+    }
+
+
     void GetV3FromFile(string file)
     {  
    
     if (File.Exists(file))
         {
-            rf.points.Clear();
+            rf.V3ListOfPoints.Clear();
   
             sr = File.ReadAllLines(file);
          
@@ -56,7 +84,7 @@ public class ReadV3FromFileEditor : Editor
                 paths.Add(new Vector3(x, y, z));
             }      
           
-            rf.points = paths;
+            rf.V3ListOfPoints = paths;
         }
         else
         {
