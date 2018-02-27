@@ -42,6 +42,9 @@ public class WriteV3InFile : MonoBehaviour {
     }
     string GetV3Position()
     {
+        Debug.Log(Controller.position);
+        Debug.Log(Controller.localPosition);
+        Debug.Log(Controller.TransformPoint(Vector3.zero));
         return String.Format("{0:F4},{1:F4},{2:F4}", Controller.position.x, Controller.position.y, Controller.position.z);
     }
    
