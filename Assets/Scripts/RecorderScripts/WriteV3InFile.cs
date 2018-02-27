@@ -7,30 +7,44 @@ using System.IO;
 
 public class WriteV3InFile : MonoBehaviour {
 
-    public AudioSource Song;
+    public AudioSource Audio;
     public Transform Controller;
     public string FileName;
     string fileName;
     private bool _isRecording = true;
+    private bool _isStarted = false;
     [Range(0.001f, 2f)]
     public float speed;
     StreamWriter sr;
+
     public void Awake()
     {
         fileName = FileName + Controller.name + ".txt";
     }
-    public void Start()
-    {
 
+    public void StopRecord()
+    {
+        if (!_isStarted) return;
+        sr.Close();
+        _isRecording = false;
+        Audio.Stop();
+        Debug.Log("Stop");
+    }
+
+    public void StartRecord()
+    {
         if (File.Exists(fileName))
-        Debug.Log(fileName + " already exists and will be owerrite.");
+            Debug.Log(fileName + " already exists and will be owerrite.");
 
         FileStream fcreate = File.Open(fileName, FileMode.Create);
         sr = new StreamWriter(fcreate);
-
+        StartCoroutine(Record(speed));
+        Audio.Play();
+        _isStarted = true;
+        Debug.Log("Start");
     }
 
-    public IEnumerator Record()
+    public IEnumerator Record(float speed)
     {
 
         while (_isRecording)
@@ -51,19 +65,5 @@ public class WriteV3InFile : MonoBehaviour {
     void OnApplicationQuit()
     {
         StopRecord();
-    }
-
-    public void StopRecord()
-    {
-        sr.Close();
-        _isRecording = false;
-        Song.Stop();
-        Debug.Log("Stop");
-    }
-    public void StartRecord()
-    {
-        StartCoroutine(Record());
-        Song.Play();
-        Debug.Log("Start");
     }
 }
