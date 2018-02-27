@@ -7,6 +7,13 @@ using System.IO;
 
 public class WriteV3InFile : MonoBehaviour {
 
+    private const Valve.VR.EVRButtonId TriggerButton = Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger;
+    private const Valve.VR.EVRButtonId GripButton = Valve.VR.EVRButtonId.k_EButton_Grip;
+
+    private SteamVR_TrackedObject _trackedObj;
+    private SteamVR_Controller.Device Controllers { get { return SteamVR_Controller.Input((int)_trackedObj.index); } }
+
+
     public Transform Controller;
     public string FileName;
     string fileName;
@@ -20,7 +27,11 @@ public class WriteV3InFile : MonoBehaviour {
     }
     public void Start()
     {
+         _trackedObj = GetComponent<SteamVR_TrackedObject>();
 
+    }
+    public void StartRecord()
+    {
         if (File.Exists(fileName))
         Debug.Log(fileName + " already exists and will be owerrite.");
 
@@ -28,13 +39,19 @@ public class WriteV3InFile : MonoBehaviour {
         sr = new StreamWriter(fcreate);
             
         StartCoroutine(Record());
-
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+
+        if (Controllers.GetPressDown(TriggerButton))
+        {
             StopRecord();
+        }
+        if (Controllers.GetPressDown(GripButton))
+        {
+            StartRecord();
+        }
     }
 
     public IEnumerator Record()
@@ -49,7 +66,7 @@ public class WriteV3InFile : MonoBehaviour {
     }
     string GetV3Position()
     {
-        return String.Format("{0:F4},{1:F4},{2:F4},", Controller.position.x, Controller.position.y, Controller.position.z);
+        return String.Format("{0:F4},{1:F4},{2:F4}", Controller.position.x, Controller.position.y, Controller.position.z);
     }
     public void StopRecord()
     {

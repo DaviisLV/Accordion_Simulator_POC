@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class ReadV3FromFile : MonoBehaviour {
 
-    public Vector3[] V3Array;
+    public List<Vector3> points = new List<Vector3>();
 
 }
