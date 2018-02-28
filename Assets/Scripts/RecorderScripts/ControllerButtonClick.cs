@@ -16,7 +16,7 @@ public class ControllerButtonClick : MonoBehaviour {
     private void Start()
     {
         _trackedObj = GetComponent<SteamVR_TrackedObject>();
-
+        
     }
 
     private void Update()
@@ -31,7 +31,7 @@ public class ControllerButtonClick : MonoBehaviour {
         {
             
            file.StartRecord();
-            move.Start = true;
+            move.move = true;
         }
 
         if (Controller.GetPressDown(Triger))
