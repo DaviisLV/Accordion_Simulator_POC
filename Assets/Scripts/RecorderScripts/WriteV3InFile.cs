@@ -19,6 +19,8 @@ public class WriteV3InFile : MonoBehaviour {
     public float speed;
     StreamWriter _rightSW;
     StreamWriter _leftSW;
+    float _rightContStartPos;
+    float _leftContStartPos;
 
     public void Awake()
     {
@@ -49,6 +51,13 @@ public class WriteV3InFile : MonoBehaviour {
         _rightSW = new StreamWriter(_rightCFile);
         _leftSW = new StreamWriter(_leftCFile);
 
+        _rightContStartPos = RightController.position.x;
+        _leftContStartPos = LeftController.position.x;
+        float diff = (_leftContStartPos - _rightContStartPos) / 2;
+        _rightContStartPos += diff;
+        _leftContStartPos -= diff;
+         
+
         StartCoroutine(Record(speed));
         Audio.Play();
         _isStarted = true;
@@ -68,11 +77,11 @@ public class WriteV3InFile : MonoBehaviour {
     }
     string GetV3PositionRight()
     {
-        return String.Format("{0:F4},{1:F4},{2:F4}", RightController.position.x, RightController.position.y, RightController.position.z);
+        return String.Format("{0:F4},{1:F4},{2:F4}", RightController.position.x - _rightContStartPos, RightController.position.y, RightController.position.z);
     }
     string GetV3PositionLeft()
     {
-        return String.Format("{0:F4},{1:F4},{2:F4}", LeftController.position.x, LeftController.position.y, LeftController.position.z);
+        return String.Format("{0:F4},{1:F4},{2:F4}", LeftController.position.x - _leftContStartPos, LeftController.position.y, LeftController.position.z);
     }
 
     void OnApplicationQuit()
