@@ -97,7 +97,8 @@ public class SteamControllerObjectPickup : MonoBehaviour
         if (pickedObject != null)
         {
             _fixedJoint.connectedBody = pickedObject.GetComponent<Rigidbody>();
-            isThrowing = false;
+            pickedObject.GetComponent<Rigidbody>().useGravity = false;
+            pickedObject.GetComponent<Rigidbody>().freezeRotation = false;
             objectRigidbody = null;
         }
         else
@@ -111,7 +112,8 @@ public class SteamControllerObjectPickup : MonoBehaviour
         if (_fixedJoint.connectedBody != null)
         {
             objectRigidbody = _fixedJoint.connectedBody;
-
+            pickedObject.GetComponent<Rigidbody>().useGravity = true;
+            pickedObject.GetComponent<Rigidbody>().freezeRotation = true;
             _fixedJoint.connectedBody = null;
 
             isThrowing = true;
