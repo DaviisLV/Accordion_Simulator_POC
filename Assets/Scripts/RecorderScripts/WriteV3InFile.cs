@@ -13,7 +13,7 @@ public class WriteV3InFile : MonoBehaviour {
 
     string _rightControlerFile;
     string _leftControllerFile;
-    private bool _isRecording = true;
+    private bool _isRecording = false;
     private bool _isStarted = false;
     [Range(0.001f, 2f)]
     public float speed;
@@ -34,12 +34,15 @@ public class WriteV3InFile : MonoBehaviour {
         _rightSW.Close();
         _leftSW.Close();
         _isRecording = false;
+        _isStarted = false;
         Audio.Stop();
         Debug.Log("Stop");
     }
 
     public void StartRecord()
     {
+        if (_isStarted) return;
+        _isRecording = true;
         if (File.Exists(_rightControlerFile))
             Debug.Log(_rightControlerFile + " already exists and will be owerrite.");
         if (File.Exists(_leftControllerFile))
