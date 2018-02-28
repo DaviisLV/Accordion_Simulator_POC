@@ -77,11 +77,11 @@ public class WriteV3InFile : MonoBehaviour {
     }
     string GetV3PositionRight()
     {
-        return String.Format("{0:F4},{1:F4},{2:F4}", RightController.position.x - _rightContStartPos, RightController.position.y, RightController.position.z);
+        return String.Format("{0:F4},{1:F4},{2:F4}", RightController.position.x - _rightContStartPos, 0, RightController.position.z);
     }
     string GetV3PositionLeft()
     {
-        return String.Format("{0:F4},{1:F4},{2:F4}", LeftController.position.x - _leftContStartPos, LeftController.position.y, LeftController.position.z);
+        return String.Format("{0:F4},{1:F4},{2:F4}", LeftController.position.x - _leftContStartPos, 0, LeftController.position.z);
     }
 
     void OnApplicationQuit()
