@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class ControllerButtonClick : MonoBehaviour {
     public MoveForvard move;
     public WriteV3InFile file;
+    public GameObject UI;
 
     private const Valve.VR.EVRButtonId Menu = Valve.VR.EVRButtonId.k_EButton_ApplicationMenu;
     private const Valve.VR.EVRButtonId Triger = Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger;
@@ -32,13 +33,16 @@ public class ControllerButtonClick : MonoBehaviour {
             
            file.StartRecord();
             move.move = true;
+            UI.SetActive(true);
+
         }
 
         if (Controller.GetPressDown(Triger))
         {
            
             file.StopRecord();
-
+            move.move = false;
+            UI.SetActive(false);
         }
     }
 
