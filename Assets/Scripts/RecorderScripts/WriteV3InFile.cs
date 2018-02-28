@@ -8,24 +8,29 @@ using System.IO;
 public class WriteV3InFile : MonoBehaviour {
 
     public AudioSource Audio;
-    public Transform Controller;
-    public string FileName;
-    string fileName;
+    public Transform RightController;
+    public Transform LeftController;
+
+    string _rightControlerFile;
+    string _leftControllerFile;
     private bool _isRecording = true;
     private bool _isStarted = false;
     [Range(0.001f, 2f)]
     public float speed;
-    StreamWriter sr;
+    StreamWriter _rightSW;
+    StreamWriter _leftSW;
 
     public void Awake()
     {
-        fileName = FileName + Controller.name + ".txt";
+        _rightControlerFile = Audio.name + "_" + RightController.name + ".txt";
+        _leftControllerFile = Audio.name + "_" + LeftController.name + ".txt";
     }
 
     public void StopRecord()
     {
         if (!_isStarted) return;
-        sr.Close();
+        _rightSW.Close();
+        _leftSW.Close();
         _isRecording = false;
         Audio.Stop();
         Debug.Log("Stop");
@@ -33,11 +38,17 @@ public class WriteV3InFile : MonoBehaviour {
 
     public void StartRecord()
     {
-        if (File.Exists(fileName))
-            Debug.Log(fileName + " already exists and will be owerrite.");
+        if (File.Exists(_rightControlerFile))
+            Debug.Log(_rightControlerFile + " already exists and will be owerrite.");
+        if (File.Exists(_leftControllerFile))
+            Debug.Log(_leftControllerFile + " already exists and will be owerrite.");
+     
+        FileStream _rightCFile = File.Open(_rightControlerFile, FileMode.Create);
+        FileStream _leftCFile = File.Open(_leftControllerFile, FileMode.Create);
 
-        FileStream fcreate = File.Open(fileName, FileMode.Create);
-        sr = new StreamWriter(fcreate);
+        _rightSW = new StreamWriter(_rightCFile);
+        _leftSW = new StreamWriter(_leftCFile);
+
         StartCoroutine(Record(speed));
         Audio.Play();
         _isStarted = true;
@@ -49,19 +60,21 @@ public class WriteV3InFile : MonoBehaviour {
 
         while (_isRecording)
         {
-            sr.WriteLine(GetV3Position());
+            _rightSW.WriteLine(GetV3PositionRight());
+            _leftSW.WriteLine(GetV3PositionLeft());
             yield return new WaitForSeconds(speed);
         }
   
     }
-    string GetV3Position()
+    string GetV3PositionRight()
     {
-        Debug.Log(Controller.position);
-        Debug.Log(Controller.localPosition);
-        Debug.Log(Controller.TransformPoint(Vector3.zero));
-        return String.Format("{0:F4},{1:F4},{2:F4}", Controller.position.x, Controller.position.y, Controller.position.z);
+        return String.Format("{0:F4},{1:F4},{2:F4}", RightController.position.x, RightController.position.y, RightController.position.z);
     }
-   
+    string GetV3PositionLeft()
+    {
+        return String.Format("{0:F4},{1:F4},{2:F4}", LeftController.position.x, LeftController.position.y, LeftController.position.z);
+    }
+
     void OnApplicationQuit()
     {
         StopRecord();
