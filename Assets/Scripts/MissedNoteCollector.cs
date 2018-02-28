@@ -10,14 +10,15 @@ public class MissedNoteCollector : MonoBehaviour {
     {
         if (other.gameObject.tag == "BlueNotes" || other.gameObject.tag == "RedNotes")
         {
-            MissNote();
+          //  MissNote();
             Destroy(other.gameObject);
             caunt++;
         }
 
     }
     public void MissNote()
-    {if (music.pitch >0)
+    {
+        if (music.pitch >0)
         music.pitch -= 0.01f;
     }
     public int GetMissedCount()
