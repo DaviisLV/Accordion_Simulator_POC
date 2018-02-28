@@ -12,7 +12,7 @@ public class Controller : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        Accardion.transform.position = new Vector3(HeadCamera.transform.position.x, HeadCamera.transform.position.y - 1, HeadCamera.transform.position.z + 0.3f);
+        Accardion.transform.position = new Vector3(HeadCamera.transform.position.x, HeadCamera.transform.position.y, HeadCamera.transform.position.z + 0.3f);
     }
 
 
