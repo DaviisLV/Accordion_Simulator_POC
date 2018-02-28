@@ -25,7 +25,7 @@ public class OnCollisionSelfDestroy : MonoBehaviour {
             
             }
          
-            HitNote();
+           // HitNote();
 
             Destroy(other.gameObject, 1f);
 
