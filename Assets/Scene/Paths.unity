@@ -233,8 +233,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   move: {fileID: 1020153962}
   file: {fileID: 278155777}
-  UI: {fileID: 0}
-  StartScreenUI: {fileID: 0}
+  UI: {fileID: 1844390437}
+  StartScreenUI: {fileID: 553318669}
 --- !u!114 &306712695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,8 +248,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   move: {fileID: 1020153962}
   file: {fileID: 278155777}
-  UI: {fileID: 0}
-  StartScreenUI: {fileID: 0}
+  UI: {fileID: 1844390437}
+  StartScreenUI: {fileID: 553318669}
 --- !u!114 &306712696
 MonoBehaviour:
   m_ObjectHideFlags: 0
