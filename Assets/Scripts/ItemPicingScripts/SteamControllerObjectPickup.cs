@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class SteamControllerObjectPickup : MonoBehaviour
 {
@@ -10,7 +11,8 @@ public class SteamControllerObjectPickup : MonoBehaviour
     private Rigidbody objectRigidbody;
     private GameObject pickedObject;
     private bool isThrowing;
-
+    private bool isPicked = false;
+    private bool isRuning = false;
     private SteamVR_Controller.Device Controller { get { return SteamVR_Controller.Input((int)_trackedObj.index); } }
 
     #region MonoBehaviour
@@ -96,12 +98,18 @@ public class SteamControllerObjectPickup : MonoBehaviour
     {
         if (pickedObject != null)
         {
+            isPicked = true;
             _fixedJoint.connectedBody = pickedObject.GetComponent<Rigidbody>();
             pickedObject.GetComponent<Rigidbody>().useGravity = false;
             pickedObject.GetComponent<Rigidbody>().freezeRotation = false;
             pickedObject.transform.position = Vector3.zero;
             pickedObject.transform.rotation = Quaternion.identity;
             objectRigidbody = null;
+            if (!isRuning)
+            {
+                StartCoroutine(RePosition());
+                isRuning = true;
+            }
         }
         else
         {
@@ -113,6 +121,8 @@ public class SteamControllerObjectPickup : MonoBehaviour
     {
         if (_fixedJoint.connectedBody != null)
         {
+            isPicked = false;
+            isRuning = false;
             objectRigidbody = _fixedJoint.connectedBody;
             pickedObject.GetComponent<Rigidbody>().rotation = Quaternion.identity;
             pickedObject.GetComponent<Rigidbody>().useGravity = true;
@@ -123,4 +133,13 @@ public class SteamControllerObjectPickup : MonoBehaviour
 
         }
     }
+    IEnumerator RePosition()
+    {
+        while (isPicked)
+        {
+            Debug.Log("Runing");
+        }
+        return null;
+    }
+
 }
