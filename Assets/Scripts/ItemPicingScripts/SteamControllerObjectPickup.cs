@@ -10,9 +10,8 @@ public class SteamControllerObjectPickup : MonoBehaviour
 
     private Rigidbody objectRigidbody;
     private GameObject pickedObject;
+    private Rigidbody pickedObjectRigB;
     private bool isThrowing;
-    private bool isPicked = false;
-    private bool isRuning = false;
     private SteamVR_Controller.Device Controller { get { return SteamVR_Controller.Input((int)_trackedObj.index); } }
 
     #region MonoBehaviour
@@ -77,7 +76,7 @@ public class SteamControllerObjectPickup : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("OnTriggerEnter " + other.gameObject.name);
+    //    Debug.Log("OnTriggerEnter " + other.gameObject.name);
     }
 
     private void OnTriggerStay(Collider other)
@@ -85,6 +84,7 @@ public class SteamControllerObjectPickup : MonoBehaviour
         if (other.GetComponent<Pickable>())
         {
             pickedObject = other.gameObject;
+            pickedObjectRigB = pickedObject.GetComponent<Rigidbody>();
         }
     }
 
@@ -98,18 +98,11 @@ public class SteamControllerObjectPickup : MonoBehaviour
     {
         if (pickedObject != null)
         {
-            isPicked = true;
+           
             _fixedJoint.connectedBody = pickedObject.GetComponent<Rigidbody>();
-            pickedObject.GetComponent<Rigidbody>().useGravity = false;
-            pickedObject.GetComponent<Rigidbody>().freezeRotation = false;
-            pickedObject.transform.position = Vector3.zero;
-            pickedObject.transform.rotation = Quaternion.identity;
+            pickedObjectRigB.useGravity = false;
+            pickedObjectRigB.freezeRotation = false;
             objectRigidbody = null;
-            if (!isRuning)
-            {
-                StartCoroutine(RePosition());
-                isRuning = true;
-            }
         }
         else
         {
@@ -120,26 +113,15 @@ public class SteamControllerObjectPickup : MonoBehaviour
     private void DropObj()
     {
         if (_fixedJoint.connectedBody != null)
-        {
-            isPicked = false;
-            isRuning = false;
+        {         
             objectRigidbody = _fixedJoint.connectedBody;
-            pickedObject.GetComponent<Rigidbody>().rotation = Quaternion.identity;
-            pickedObject.GetComponent<Rigidbody>().useGravity = true;
-            pickedObject.GetComponent<Rigidbody>().freezeRotation = true;
+            pickedObjectRigB.rotation = Quaternion.identity;
+            pickedObjectRigB.useGravity = true;
+            pickedObjectRigB.freezeRotation = true;
             _fixedJoint.connectedBody = null;
 
             isThrowing = true;
 
         }
     }
-    IEnumerator RePosition()
-    {
-        while (isPicked)
-        {
-            Debug.Log("Runing");
-        }
-        return null;
-    }
-
 }
