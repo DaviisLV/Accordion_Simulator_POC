@@ -98,8 +98,8 @@ public class SteamControllerObjectPickup : MonoBehaviour
     {
         if (pickedObject != null)
         {
-           
-            _fixedJoint.connectedBody = pickedObject.GetComponent<Rigidbody>();
+
+            _fixedJoint.connectedBody = pickedObjectRigB;
             pickedObjectRigB.useGravity = false;
             pickedObjectRigB.freezeRotation = false;
             objectRigidbody = null;
